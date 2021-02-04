@@ -7,6 +7,23 @@ import matplotlib.pyplot as plt
 #############################################
 
 def grab_col_names(dataframe, cat_th=10, car_th=20):
+    """
+       Verisetindeki değişkenlerin tiplerini genel anlamda açıklamak ve tanımak için yazılmış bir fonksiyondur..
+
+       Parameters
+       ----------
+       dataframe: pd.DataFrame
+
+       categorical_threshhold: int
+             Bir değişkenin kategorik olarak nitelendirilmesi için gerekli maksimum sınıf sayısını ifade eder.
+
+       cardinality_threshhold: int
+             Bir değişkenin numerik olarak nitelendirilmesi için gerekli minumum sınıf sayısını ifade eder.
+
+       Returns : cat_cols, cat_but_car, num_cols, num_but_cat
+       -------
+
+       """
 
     cat_cols = [col for col in dataframe.columns if dataframe[col].dtypes == "O"]
 
@@ -44,6 +61,8 @@ def grab_col_names(dataframe, cat_th=10, car_th=20):
 #############################################
 
 def cat_summary(dataframe, col_name, plot=False):
+
+
     print(pd.DataFrame({col_name: dataframe[col_name].value_counts(),
                         "Ratio": 100 * dataframe[col_name].value_counts() / len(dataframe)}))
 
